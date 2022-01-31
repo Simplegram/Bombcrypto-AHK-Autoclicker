@@ -1,16 +1,16 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance Force
 
 ;====================
-; V3 = Pixel trigger (Untested)
+; V3 = Pixel trigger
 ;====================
 
 global logfile_path := "E:\Projects\AHK\log\logfile.txt"
-global loop_time := 300000
-global max_time := 500
+global loop_time := 300000 ; in miliseconds
+global max_time := 500 ; in minutes
 
 global time := 0
 global stop := 0
@@ -169,12 +169,13 @@ hero_on(x, y, color){
 	}
 	
 	prtsc()
+	Sleep, 2000
 	
 	global success := 0
+	mclick(x, y)
 	Loop {
 		success := 0
 		Loop {
-			mclick(x, y)
 			success += 1
 			Sleep, 1000
 			if(get_color(520, y) == %color%){
@@ -338,15 +339,14 @@ main(loop_time){
 						prtsc()
 					} 
 				} 
-			}
-			; } else if(Mod(time, 315) == 0){
-				; if(char_menu() == 1){
-					; if(hero_on(880, 805, 0xD5E3C7) == 1){
-						; log("Pepe low active")
-						; prtsc()
-					; } 
-				; }  
-			; } 
+			} else if(Mod(time, 315) == 0){
+				if(char_menu() == 1){
+					if(hero_on(880, 805, 0xD5E3C7) == 1){
+						log("Pepe low active")
+						prtsc()
+					} 
+				}  
+			} 
 			else {
 				anti_afk()
 			}
