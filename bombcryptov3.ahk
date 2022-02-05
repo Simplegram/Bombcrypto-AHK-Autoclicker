@@ -352,7 +352,9 @@ main(loop_time){
 			}
 		} else if(stop == 0) {
 			error_handler()
-		} 
+		} else {
+			error_handler()
+		}
 		
 		Sleep, %loop_time%
 		
