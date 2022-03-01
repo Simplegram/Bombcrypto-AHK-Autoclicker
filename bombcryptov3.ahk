@@ -178,7 +178,7 @@ hero_on(x, y, color){
 		Loop {
 			success += 1
 			Sleep, 1000
-			if(get_color(520, y) == %color%){
+			if(get_color(520, y) != %color%){
 				break
 			} 
 			if(success == 60){
