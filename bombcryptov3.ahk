@@ -234,9 +234,10 @@ error_handler(){
 				mclick(985, 800)
 				
 				success := 0
-				While(get_color(985, 765) != 0xF7E0C2){
+				While(get_color(985, 745) != 0xF7E0C2){
 					Sleep, 1000
 					success += 1
+					log("Checking login dialog " success)
 					if(success == 20){
 						log("Timeout")
 						break 2
@@ -244,10 +245,11 @@ error_handler(){
 				}
 				
 				success := 0
-				mclick(985, 740)
+				mclick(985, 725)
 				While(get_color(200, 350) != 0xFFFFFF){
 					Sleep, 1000
 					success += 1
+					log("Checking metamask dialog " success)
 					if(success == 40){
 						log("Timeout")
 						break 2
